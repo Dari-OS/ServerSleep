@@ -1,0 +1,17 @@
+ColorOfNum: '§3§l'
+    #This is only intended to contain color codes (like §3 etc.) that the "number of players who need to sleep" is going to have
+    #You can also write a prefix if you want, but I wouldn´t recommend it!
+
+
+BossBarSleepMessage: '§bmore §3§lplayer(s)§r§b need(s) to sleep'
+
+
+BossBarColor: 'BLUE'
+    #If you want to change the color refer to:
+    #https://hub.spigotmc.org/javadocs/spigot/org/bukkit/boss/BarColor.html
+
+
+RoundUp: false
+    #This decides, if 7 players are online and 3 are sleeping ,whether the server skips the night or one more Player needs to sleep.
+      #set this to TRUE if you want to skip the night at 4 Players (if 7 are online)
+      #set this to FALSE if you want to skip the night at 3 Players (if 7 are online)
