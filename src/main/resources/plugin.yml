@@ -1,0 +1,4 @@
+name: ServerSleep
+version: '${project.version}'
+main: me.dari_os.serversleep.Main
+api-version: 1.19
