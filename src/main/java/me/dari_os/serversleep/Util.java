@@ -48,6 +48,24 @@ public class Util {
         main.bossbar.setProgress(calcProgress());
     }
 
+    public void updateBossbar() {
+        updatePlayers();
+        int leftToSleep = 0;
+        if(main.getConfig().getBoolean("RoundUp")) {
+            leftToSleep = (int) (Math.ceil(onlinePlayers/2.0) - sleepingPlayers);
+        } else {
+            leftToSleep = (int) (Math.floor(onlinePlayers/2.0) - sleepingPlayers);
+        }
+        main.bossbar.setTitle(new TextComponent(main.getConfig().getString("ColorOfNum") + leftToSleep).toLegacyText() + " "
+                + new TextComponent(main.getConfig().getString("BossBarSleepMessage")).toLegacyText());
+        main.bossbar.setProgress(calcProgress());
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            player.playSound(player, Sound.BLOCK_AMETHYST_BLOCK_STEP, 100, 10);
+            main.bossbar.addPlayer(player);
+        }
+        showBossbar(true);
+    }
+
     public void showBossbar(boolean bol) {
         main.bossbar.setVisible(bol);
     }

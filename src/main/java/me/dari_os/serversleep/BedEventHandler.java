@@ -3,6 +3,7 @@ package me.dari_os.serversleep;
 import io.papermc.paper.event.player.PlayerDeepSleepEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
+import org.bukkit.WeatherType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,14 +19,15 @@ public class BedEventHandler implements Listener {
     public void onSleep(PlayerDeepSleepEvent e) {
         if (ut.getBossBar() == null) {
             ut.initBossbar(true);
+        } else {
+            ut.updateBossbar();
         }
-        else {
-            ut.showBossbar(true);
-            for (Player player : Bukkit.getOnlinePlayers()) {
-                player.playSound(player, Sound.BLOCK_AMETHYST_BLOCK_STEP, 100, 10);
-            }
+
+        if (ut.isNightSkippable()) {
+            System.out.println(2);
+            if (!Bukkit.getWorld("world").isDayTime()) Bukkit.getWorld("world").setTime(0);
+            if (Bukkit.getWorld("world").hasStorm()) Bukkit.getWorld("world").setStorm(false);
         }
-        if (ut.isNightSkippable()) Bukkit.getWorld("world").setTime(0);
     }
 
     @EventHandler
