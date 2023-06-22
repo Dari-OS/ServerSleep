@@ -90,16 +90,22 @@ public class Util {
     }
 
     public double calcProgress() {
-
+        double retValue = 0;
         if(main.getConfig().getBoolean("RoundUp")) {
-            return sleepingPlayers / Math.ceil(onlinePlayers / 2.0);
+            retValue = sleepingPlayers / Math.ceil(onlinePlayers / 2.0);
         } else {
-            return sleepingPlayers / Math.floor(onlinePlayers / 2.0);
+            retValue = sleepingPlayers / Math.floor(onlinePlayers / 2.0);
         }
+        if (retValue > 1) return 1;
+        return retValue;
     }
 
     public BossBar getBossBar() {
         return main.bossbar;
+    }
+
+    public int getSleeping() {
+        return (int) sleepingPlayers;
     }
 
     public void destroyBossBar () { //prevents exceptions from occurring if you do / reload
