@@ -24,7 +24,6 @@ public class BedEventHandler implements Listener {
         }
 
         if (ut.isNightSkippable()) {
-            System.out.println(2);
             if (!Bukkit.getWorld("world").isDayTime()) Bukkit.getWorld("world").setTime(0);
             if (Bukkit.getWorld("world").hasStorm()) Bukkit.getWorld("world").setStorm(false);
         }
