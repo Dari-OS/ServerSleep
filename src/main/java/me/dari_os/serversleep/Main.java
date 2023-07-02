@@ -1,7 +1,9 @@
 package me.dari_os.serversleep;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.boss.BossBar;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
@@ -13,6 +15,7 @@ public final class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new BedEventHandler(), this);
         getConfig().options().copyDefaults();
         saveDefaultConfig();
+
     }
 
 

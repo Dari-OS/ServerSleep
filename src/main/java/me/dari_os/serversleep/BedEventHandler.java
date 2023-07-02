@@ -43,10 +43,6 @@ public class BedEventHandler implements Listener {
         if (ut.getBossBar() != null) ut.showBossbar(b);
     }
 
-    @EventHandler
-    public void onLeave(PlayerQuitEvent e) {
-        if (ut.getSleeping()-1 == 0 && ut.getBossBar() != null) showBossb(false);
-    }
 
     public static void removeBossBar() {
         ut.destroyBossBar();
