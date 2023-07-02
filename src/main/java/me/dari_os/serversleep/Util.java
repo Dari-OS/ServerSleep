@@ -42,7 +42,7 @@ public class Util {
             showBossbar(b);
         }
             for (Player player : Bukkit.getOnlinePlayers()) {
-                player.playSound(player, Sound.BLOCK_AMETHYST_BLOCK_STEP, 100, 10);
+                player.playSound(player, Sound.BLOCK_AMETHYST_BLOCK_STEP, 1, 10);
                 main.bossbar.addPlayer(player);
             }
         main.bossbar.setProgress(calcProgress());
@@ -60,7 +60,7 @@ public class Util {
                 + new TextComponent(main.getConfig().getString("BossBarSleepMessage")).toLegacyText());
         main.bossbar.setProgress(calcProgress());
         for (Player player : Bukkit.getOnlinePlayers()) {
-            player.playSound(player, Sound.BLOCK_AMETHYST_BLOCK_STEP, 100, 10);
+            player.playSound(player, Sound.BLOCK_AMETHYST_BLOCK_STEP, 1, 10);
             main.bossbar.addPlayer(player);
         }
         showBossbar(true);
@@ -91,14 +91,16 @@ public class Util {
 
     public double calcProgress() {
         double retValue = 0;
+        updatePlayers();
         if(main.getConfig().getBoolean("RoundUp")) {
             retValue = sleepingPlayers / Math.ceil(onlinePlayers / 2.0);
         } else {
             retValue = sleepingPlayers / Math.floor(onlinePlayers / 2.0);
         }
-        if (retValue > 1) return 1;
+        if (retValue > 1 || retValue > 0) return 1;
         return retValue;
     }
+
 
     public BossBar getBossBar() {
         return main.bossbar;
